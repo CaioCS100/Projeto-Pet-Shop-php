@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+/*Defini o coloquei a margin e padding 0 para retirar o espaço interno e externo que vem por padrao de cada navegador*/
+body{
+
+	margin: 0px;
+	padding: 0px;
+}
+
+/*Defini o menu e o sub-menu com espaço interno e externo 0, para deixar o menu colado na parte de cima do navegador, tirei as bolinhas laterais do <li> e defini uma cor de fundo  */
+.menu,
+.sub-menu{
+
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	background: #000;
+
+}
+
+.clearfix:after{
+
+	content: '.';
+	display: block;
+	clear: both;
+	height: 0px;
+	line-height: 0px;
+	font-size: 0pt;
+	visibility: hidden;
+	overflow: hidden;
+}
+
+.menu a{
+
+	text-decoration: none;
+	display: block;
+	padding: 10px;
+	color: white;
+	font-family: sans-serif;
+	font-size: 14pt;
+	font-weight: 700;
+}
+
+.menu li{
+
+	position: relative;
+}
+
+.menu > li{
+
+	float: left;
+	background: black;
+}
+
+.menu > li:hover{
+
+	background: #444;
+}
+
+.menu > li:hover > .sub-menu{
+
+	display: block;
+}
+
+.sub-menu{
+
+	position: absolute;
+	min-width: 270px;
+	background: #6D6D6D;
+	display: none;
+}
+
+#comprimento-box-caixa{
+
+	min-width: 120px;
+}
+
+#comprimento-box-dono{
+
+	min-width: 211px;
+}
+
+#comprimento-box-animal{
+	min-width: 228px;
+}
+
+#comprimento-box-produto{
+	min-width: 235px;
+}
+
+#comprimento-box-servico{
+	min-width: 233px;
+}
+
+#comprimento-box-consulta{
+	min-width: 183px;
+}
+
+#logout{
+
+	float: right;
+	padding-right: 5px;
+}
+
+/*Coloquei uma posiçao absoluta, defini uma altura, coloquei a largura do tamanho da largura max da tela que deixada no width do body, coloquei uma imagem de fundo*/
+div#parte-inferior-do-site{
+
+    position: relative;
+    height: 800px;
+    width: 100%;
+    top: 80px;
+    background: url('../Imagens/tela_fundo.jpg') no-repeat center;
+    background-size: cover; 
+    
+
+}
