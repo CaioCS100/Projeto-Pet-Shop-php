@@ -22,7 +22,11 @@ Route::group(['prefix' => '/'], function() {
 
 Route::group(['prefix' => 'cliente'], function() {
     
-    Route::post('/Cadastrar','LoginController@verificaLogin'); // mudar isso para controler do cliente
+    Route::get('/Cadastrar','ProprietarioController@chamarTelaCadastroLogin')->name('cadastrarDono');
     
 });
+
+
+Route::get('/Caixa','');
+
 

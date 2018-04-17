@@ -19,7 +19,7 @@
                     </li>
                     <li><a href="#"> Donos </a>
                         <ul class="sub-menu clearfix" id="comprimento-box-dono">
-                            <li><a href="#">Adicionar Novo Dono</a></li>
+                            <li><a href="{{ route('cadastrarDono') }}">Adicionar Novo Dono</a></li>
                             <li><a href="#">Procurar Dono</a></li>
                         </ul>
                     </li>

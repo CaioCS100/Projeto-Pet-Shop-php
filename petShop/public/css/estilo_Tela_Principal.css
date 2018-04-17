@@ -30,6 +30,8 @@ body{
 	overflow: hidden;
 }
 
+/*Tirei o sublinhado da tag <a>, deixei ele em blocos, dei um espaço interno,coloquei uma cor, defini uma fonte, defini o tamanho da fonte e deixei o texto em negrito*/
+
 .menu a{
 
 	text-decoration: none;
@@ -41,10 +43,14 @@ body{
 	font-weight: 700;
 }
 
+/*Deixei os <li> do menu com position relativos*/
+
 .menu li{
 
 	position: relative;
 }
+
+/*Deixei somente o primeiro <li>, com uma flutuação na esquerda e com fundo preto*/
 
 .menu > li{
 
@@ -52,16 +58,20 @@ body{
 	background: black;
 }
 
+/*Quando colocar o mouse por cima vai acontecer o efeito do fundo mudar de cor, porem, so vai acontecer com o primeiro <li> */
+
 .menu > li:hover{
 
 	background: #444;
 }
 
+/*Quando colocar o mouse por cima, o sub-menu vai ficar em bloco, porem isso so vai acontecer com o primeiro sub-menu*/
 .menu > li:hover > .sub-menu{
 
 	display: block;
 }
 
+/*Deixei o sub-menu com posição absoluta, com o lugar minima, um fundo e o display none serve para esconder os sub-menus */
 .sub-menu{
 
 	position: absolute;
@@ -69,7 +79,7 @@ body{
 	background: #6D6D6D;
 	display: none;
 }
-
+/*Defini o comprimento de cada <li> do sub-menu para ficarem esticamento iguais, pq dependendo do tamanho da palavra que ficava no campo <a> ficava uma background muito diferente de um <li> para outro <li>*/
 #comprimento-box-caixa{
 
 	min-width: 120px;
@@ -95,7 +105,7 @@ body{
 #comprimento-box-consulta{
 	min-width: 183px;
 }
-
+/*Deifini o logout na direita e com espaço interno da direita */
 #logout{
 
 	float: right;
