@@ -10,7 +10,7 @@ body{
 /*Defini o menu e o sub-menu com espaço interno e externo 0, para deixar o menu colado na parte de cima do navegador, tirei as bolinhas laterais do <li> e defini uma cor de fundo  */
 .menu,
 .sub-menu{
-
+	z-index: 10;
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
@@ -37,6 +37,17 @@ body{
 	text-decoration: none;
 	display: block;
 	padding: 10px;
+	color: white;
+	font-family: sans-serif;
+	font-size: 14pt;
+	font-weight: 700;
+}
+
+
+.menu span{
+
+	top: 0px;
+	display: block;
 	color: white;
 	font-family: sans-serif;
 	font-size: 14pt;
@@ -118,7 +129,6 @@ div#parte-inferior-do-site{
     position: relative;
     height: 800px;
     width: 100%;
-    top: 80px;
     background: url('../Imagens/tela_fundo.jpg') no-repeat center;
     background-size: cover; 
     

@@ -12,9 +12,9 @@
         <nav class="menu-container"> 
 
             <ul class="menu clearfix">
-                    <li><a href="#"> Caixa </a>
+                    <li><a href="#">Caixa</a> 
                         <ul class="sub-menu clearfix" id="comprimento-box-caixa">
-                            <li><a href="#">Abrir Caixa</a></li>
+                            <li><a href="{{ route('abrirCaixa') }}">Abrir Caixa</a></li>
                         </ul>
                     </li>
                     <li><a href="#"> Donos </a>

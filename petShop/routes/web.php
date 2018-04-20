@@ -26,7 +26,4 @@ Route::group(['prefix' => 'cliente'], function() {
     
 });
 
-
-Route::get('/Caixa','');
-
-
+Route::get('/Caixa','CaixaController@abrirCaixa')->name('abrirCaixa');
