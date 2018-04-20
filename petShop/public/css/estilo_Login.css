@@ -13,27 +13,30 @@ header{
 h1{
 
     color: white;
+    margin-top: 10%;
 }
 
 /*Tamanho do letra do label  */
 .tamanho{
 
     font-size: 20pt;
-    top: 200px;
+    font-weight: 700;
 }
+
 
 /*Posição dos inputs*/
 
 .tamanhoCampo{
 
-    height: 18px;
+    height: 20px;
     top: 50px;
+    width: 50%;
 }
 
 form{
 
     color: white;
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 form input#idSenha{
@@ -43,7 +46,7 @@ form input#idSenha{
 
 .botao{
     position: absolute;
-    left: 55%;
+    left: 73%;
     border: 1px solid rgba(0, 0, 0, 0.4);
     padding: 5px;
     background-color: #888888; 

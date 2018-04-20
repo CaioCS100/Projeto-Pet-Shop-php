@@ -18,7 +18,8 @@
             <strong>Login ou senha errada!</strong>
         </div>
         @endif
-
+    
+        
         <form method="POST" action="{{ route('validarLogin') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
            <label for="idLogin" class="tamanho">Login:</label>
@@ -29,7 +30,6 @@
             <div id="mostrarImagem">
                 <input type = "file" value = "Imagem" id="fileUpload" accept=".jpg, .jpeg, .png"/>
                 <div id="image-holder" </div>
-        </div>
         </form>
 
     </header>
