@@ -10,8 +10,9 @@ $("#fileUpload").on('change', function () {
             $("<img />", {
                 "src": e.target.result,
                 "class": "thumb-image",
-                "width": "300px",
-                "height":"300px"
+                "width": "250px",
+                "height":"250px",
+                "border": "none"
             }).appendTo(image_holder);
         }
         image_holder.show();

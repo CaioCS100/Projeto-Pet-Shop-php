@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+body{
+
+    background: #B0C4DE;
+}
+.asterisco{
+
+    color: red;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    cursor:pointer;
+    display:block;
+    width:8px;
+    color: #333;
+    text-align:center;
+    position:relative;
+}
+   input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+   margin: 0; 
+}
+
+#image-holder{
+
+    border: 1px black solid;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    left: 90%;
+}
+
+#fileUpload{
+
+    position: absolute;
+    left: 90%;
+    top: 120%;
+}
+
+#titulo_Fieldset{
+
+    background: #4B0082;
+    color: #C0C0C0;
+}
+
+#botao-salvar{
+
+    background: url("../imagens/botao_salvar.png") no-repeat;
+    height: 54px;
+    width: 54px;
+}
+
+#botao-novo-cadastro{
+
+    background: url("../imagens/ADD.png") no-repeat;
+    height: 54px;
+    width: 54px;
+}
+
+#botao-procurar-clientes{
+
+    background: url("../imagens/botao_pesquisar.png") no-repeat;
+    height: 54px;
+    width: 54px;
+}
+
+#botao-voltar{
+
+    background: url("../imagens/botao_voltar.png") no-repeat;
+    height: 54px;
+    width: 54px;
+}

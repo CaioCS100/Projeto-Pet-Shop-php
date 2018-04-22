@@ -23,6 +23,8 @@ Route::group(['prefix' => '/'], function() {
 Route::group(['prefix' => 'cliente'], function() {
     
     Route::get('/Cadastrar','ProprietarioController@chamarTelaCadastroLogin')->name('cadastrarDono');
+    Route::get('/ProcurarDono','ProprietarioController@chamarTelaProcurarClientes')->name('procurarDono');
+    
     
 });
 

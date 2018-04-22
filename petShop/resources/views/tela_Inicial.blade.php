@@ -27,13 +27,10 @@
             <label for="idSenha" class="tamanho"> Senha: </label>
             <input type="password" placeholder="Digite sua senha" name="cSenha" id="idSenha" class="tamanhoCampo"/> <br/>
             <input type="submit" value="Acessar" class="botao"/> <br/> <br/> <br/>
-            <div id="mostrarImagem">
-                <input type = "file" value = "Imagem" id="fileUpload" accept=".jpg, .jpeg, .png"/>
-                <div id="image-holder" </div>
+            
         </form>
 
     </header>
-    <script src="{{asset('js/jquery-3.2.1.min.js')}}"> </script>
-    <script type="text/javascript" src="{{asset('js/JFileChooser.js')}}"> </script>
+    
 </body>
 </html>

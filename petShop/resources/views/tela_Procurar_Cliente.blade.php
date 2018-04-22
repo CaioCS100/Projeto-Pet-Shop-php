@@ -7,6 +7,6 @@
     <title>Pet&Shop</title>
 </head>
 <body>
-    <h1> Tela em desenvolvimento </h1>
+        <h1> Tela em desenvolvimento </h1>
 </body>
 </html>
