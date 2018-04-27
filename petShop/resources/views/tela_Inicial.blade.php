@@ -20,7 +20,7 @@
         @endif
     
         
-        <form method="POST" action="{{ route('validarLogin') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('validarLogin') }}">
             {{ csrf_field() }}
            <label for="idLogin" class="tamanho">Login:</label>
             <input type="text" placeholder="Digite seu login" name="cTexto" id="idLogin" class="tamanhoCampo"/> <br/>

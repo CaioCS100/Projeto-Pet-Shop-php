@@ -16,6 +16,7 @@ function ativarCampos()
     $('#botao-salvar').prop('disabled', false);
     $('#botao-novo-cadastro').prop('disabled', true);
     $('#botao-procurar-clientes').prop('disabled', true);
+    $('#idNome').focus();
 }
 
 function voltar()

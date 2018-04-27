@@ -25,7 +25,7 @@
                     </li>
                     <li><a href="#"> Animais </a>
                         <ul class="sub-menu clearfix" id="comprimento-box-animal">
-                            <li><a href="#">Adicionar Novo Animal</a></li>
+                            <li><a href="{{ route('cadastrarAnimal') }}">Adicionar Novo Animal</a></li>
                             <li><a href="#">Procurar Animal</a></li>
                         </ul>
                     </li>

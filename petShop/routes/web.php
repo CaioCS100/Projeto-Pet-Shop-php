@@ -22,10 +22,19 @@ Route::group(['prefix' => '/'], function() {
 
 Route::group(['prefix' => 'cliente'], function() {
     
-    Route::get('/Cadastrar','ProprietarioController@chamarTelaCadastroLogin')->name('cadastrarDono');
+    Route::get('/Cadastrar','ProprietarioController@chamarTelaCadastroCliente')->name('cadastrarDono');
     Route::get('/ProcurarDono','ProprietarioController@chamarTelaProcurarClientes')->name('procurarDono');
-    
+    Route::post('/SalvarCliente','ProprietarioController@addNovoCliente')->name('salvarDono');
     
 });
+
+
+Route::group(['prefix' => 'animal'], function() {
+    
+    
+    Route::get('/Cadastrar','AnimalController@chamarTelaCadastroAnimal')->name('cadastrarAnimal');
+    
+});
+
 
 Route::get('/Caixa','CaixaController@abrirCaixa')->name('abrirCaixa');

@@ -5,6 +5,11 @@ body{
 
 	margin: 0px;
 	padding: 0px;
+	height: 100%;
+}
+
+html {
+	height: 100%;
 }
 
 /*Defini o menu e o sub-menu com espaço interno e externo 0, para deixar o menu colado na parte de cima do navegador, tirei as bolinhas laterais do <li> e defini uma cor de fundo  */
@@ -127,10 +132,10 @@ body{
 div#parte-inferior-do-site{
 
     position: relative;
-    height: 800px;
+    height: 100%;
     width: 100%;
     background: url('../Imagens/tela_fundo.jpg') no-repeat center;
-    background-size: cover; 
+    background-size: auto 100%; 
     
 
 }

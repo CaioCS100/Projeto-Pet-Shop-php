@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class ProprietarioController extends Controller
 {
-    public function chamarTelaCadastroLogin(){
-
-        return view('tela_Cadastro_Dono');
+    public function chamarTelaCadastroCliente(){
+        $dados['ufs'] = $this->UF();
+        return view('tela_Cadastro_Dono', $dados);
     }
 
     public function chamarTelaProcurarClientes()
@@ -16,9 +16,24 @@ class ProprietarioController extends Controller
         return view('tela_Procurar_Cliente');
     }
 
+    public function addNovoCliente(Request $resquest){
+
+        $resquest -> validate([
+            'nome' => 'required',
+            'cpf' => 'required|numeric',
+            'data' => 'required',
+            'cep' => 'required|numeric',
+            'telefone' => 'required|numeric',
+            'email' => 'required|email'
+            ]);
+
+        echo "<h1> Aqui eu irei salvar os dados do cliente no Banco de Dados";
+    }
+
     public function UF()
     {
-        $uf = array(
+        return array(
+            "AC",
             "AL",
             "AM",
             "AP",

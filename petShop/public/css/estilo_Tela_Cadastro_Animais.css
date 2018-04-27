@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+.asterisco{
+
+    color: red;
+}
+
+#botaoPesquisar{
+
+    position: absolute;
+    top: 25px;
+}
+
+#radioButton{
+
+    position: relative;
+    top: 30px;
+    left: 5px;
+    font-size: 15pt;
+}
+
+#botao-Procurar{
+
+    background: url("../Imagens/lupa.png") no-repeat;
+    height: 42px;
+    width: 40px;
+    position: relative;
+    top: 30px;
+}
+
+#botao-salvar{
+
+    background: url("../imagens/botao_salvar.png") no-repeat;
+    height: 54px;
+    width: 54px;
+}
+
+#botao-novo-cadastro{
+
+    background: url("../imagens/ADD.png") no-repeat;
+    height: 54px;
+    width: 54px;
+}
+
+#botao-procurar-animais{
+
+    background: url("../imagens/procurar_pet.png") no-repeat;
+    height: 54px;
+    width: 54px;
+}
+
+#botao-voltar{
+
+    background: url("../imagens/botao_voltar.png") no-repeat;
+    height: 54px;
+    width: 54px;
+}
