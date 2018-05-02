@@ -16,9 +16,9 @@ class ProprietarioController extends Controller
         return view('tela_Procurar_Cliente');
     }
 
-    public function addNovoCliente(Request $resquest){
+    public function addNovoCliente(Request $request){
 
-        $resquest -> validate([
+        $request -> validate([
             'nome' => 'required',
             'cpf' => 'required|numeric',
             'data' => 'required',
@@ -26,6 +26,11 @@ class ProprietarioController extends Controller
             'telefone' => 'required|numeric',
             'email' => 'required|email'
             ]);
+
+            $extesao = $request->imagem->extension();
+            $nomeDaImagem = $request->cpf;
+
+            $request->imagem->storeas('app/public', "$nomeDaImagem."."$extesao");
 
         echo "<h1> Aqui eu irei salvar os dados do cliente no Banco de Dados";
     }

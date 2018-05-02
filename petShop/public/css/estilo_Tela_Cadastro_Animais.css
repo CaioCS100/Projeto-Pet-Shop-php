@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body{
+
+    background: #B0C4DE;
+}
 .asterisco{
 
     color: red;
@@ -23,7 +27,7 @@
 
     background: url("../Imagens/lupa.png") no-repeat;
     height: 42px;
-    width: 40px;
+    width: 37px;
     position: relative;
     top: 30px;
 }
@@ -54,4 +58,33 @@
     background: url("../imagens/botao_voltar.png") no-repeat;
     height: 54px;
     width: 54px;
+}
+
+#image-holder{
+
+    border: 1px black solid;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    left: 90%;
+}
+
+#fileUpload{
+
+    position: absolute;
+    left: 90%;
+    top: 160%;
+}
+
+#titulo_Fieldset{
+
+    background: #4B0082;
+    color: #C0C0C0;
+}
+
+#tituloCampoSexo{
+
+    position: absolute;
+    left: 690px;
+    top: 135px;    
 }

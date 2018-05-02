@@ -88,7 +88,7 @@
                 <div class="form-row">
 
                   <div class="form-group col-md-5">
-                    <label for="idObs"> Observações do cliente:</label> <br/>
+                    <label for="idObs"><strong> Observações do cliente:</strong></label> <br/>
                     <textarea id="idObs" name="obs" rows="5" cols="100" disabled> </textarea> <br/>
                   </div>
                   <div id="mostrarImagem" class="form-group col-md-4">
@@ -106,7 +106,8 @@
                
               
               <script src="{{asset('js/jquery-3.2.1.min.js')}}"> </script>
-              <script type="text/javascript" src="{{asset('js/CadastroDono.js')}}"> </script> 
+              <script type="text/javascript" src="{{asset('js/CadastroDono.js')}}"> </script>
+              <script type="text/javascript" src="{{asset('js/mascara.js')}}"> </script>
               <script type="text/javascript" src="{{asset('js/JFileChooser.js')}}"> </script>
               <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </body>

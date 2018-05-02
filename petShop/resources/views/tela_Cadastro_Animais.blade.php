@@ -12,7 +12,7 @@
 <body>
     <form>
         <fieldset>
-            <legend>Cadastrar Animal</legend>
+            <legend id="titulo_Fieldset">Cadastrar Animal</legend>
                 <div class="form-row">
                     <div class="form-group col-md-10">
                         <label for="idNomeDono">Nome Dono/Propietário/Cliente<span class="asterisco">*</span>:</label>
@@ -28,15 +28,15 @@
                         <label for="idNomeAnimal">Nome do Animal<span class="asterisco">*</span>:</label>
                         <input type="text" class="form-control" id="idNomeAnimal" placeholder="Digite seu nome completo" disabled>
                     </div>
-
+                    <label for="idMacho"><span id="tituloCampoSexo"> Sexo<span class="asterisco">*</span>:</span></label>
                     <div class="form-group col-md-2" id="radioButton">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="Sexo" id="idMacho" value="M" disabled>
-                            <label class="form-check-label" for="idMacho">Macho<span class="asterisco">*</span></label>
+                            <label class="form-check-label" for="idMacho">Macho</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="Sexo" id="idFemea" value="F" disabled>
-                            <label class="form-check-label" for="idFemea">Fêmea<span class="asterisco">*</span></label>
+                            <label class="form-check-label" for="idFemea">Fêmea</label>
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@
 
                     <div class="form-group col-md-4">
 
-                        <fieldset>Animal já teve cadastro em outro pet shop? Se sim, qual ? 
+                         Já teve cadastro em outro pet shop? Se sim, qual ?
                             <br/>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="Sexo" id="idSim" value="S" disabled>
@@ -86,7 +86,6 @@
                             </div> 
                             <br/>
                             <input type="text" class="form-control" disabled/>
-                        </fieldset>
                     </div>
                     <div class="form-group col-md-2"> </div>
                     <div class="form-group col-md-5">
@@ -99,6 +98,18 @@
                 
                 </div>
 
+                <div class="form-row">
+
+                    <div class="form-group col-md-5">
+                      <label for="idObs"><strong> Observações e possíveis doenças sobre o pet:</strong></label> <br/>
+                      <textarea id="idObs" name="obs" rows="5" cols="95" disabled> </textarea> <br/>
+                    </div>
+                    <div id="mostrarImagem" class="form-group col-md-4">
+                              <div id="image-holder"></div>
+                              <input type = "file" value = "Imagem" id="fileUpload" name="imagem" accept=".jpg, .jpeg, .png"/>
+                    </div>
+                  </div>
+
                 <button type="button" class="btn btn-primary" id="botao-novo-cadastro" onclick="ativarCampos()" data-toggle="tooltip" data-placement="top" title="Novo Cadastro de animais"></button>
                 <button type="submit" class="btn btn-primary" id="botao-salvar" data-toggle="tooltip" data-placement="top" title="Salvar" disabled></button>
                 <button type="button" class="btn btn-primary" id="botao-procurar-animais" onclick="redirecionar()" data-toggle="tooltip" data-placement="top" title="Procurar Animais"></button>
@@ -106,7 +117,8 @@
         </fieldset>
       </form>
 
-
+      <script src="{{asset('js/jquery-3.2.1.min.js')}}"> </script>
+      <script type="text/javascript" src="{{asset('js/JFileChooser.js')}}"> </script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </body>
 </html>
