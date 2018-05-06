@@ -20,11 +20,13 @@ class LoginController extends Controller
        else
        {
             return redirect('/')->with('invalido', true);
-       }
-       
-       // echo $request->cTexto;
-        //echo $_POST["cSenha"];
-        
+       }       
+    }
+
+    public function sair()
+    {
+
+        return redirect()->action('LoginController@fazerLogin');   
     }
 
 }

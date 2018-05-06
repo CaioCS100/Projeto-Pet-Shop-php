@@ -19,9 +19,9 @@ function ativarCampos()
     $('#idNome').focus();
 }
 
-function voltar()
+function voltarParaTelaInicial()
 {
-    history.go(-1);
+    window.location.href = "../"
 }
 
 function redirecionar()

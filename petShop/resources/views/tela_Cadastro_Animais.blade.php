@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pet&Shop</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/estilo_Tela_Cadastro_Animais.css') }}"
-
-</head>
-<body>
+@extends('template.templateMenuBar')
+    @push('css',' <link rel="stylesheet" href="' .asset('css/estilo_Tela_Cadastro_Animais.css'). '"')
+ 
+    @section('Menu')
     <form>
         <fieldset>
             <legend id="titulo_Fieldset">Cadastrar Animal</legend>
@@ -116,9 +108,11 @@
                 <button type="button" class="btn btn-primary" id="botao-voltar" onclick="voltar()" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
         </fieldset>
       </form>
+    @endsection('Menu')
 
-      <script src="{{asset('js/jquery-3.2.1.min.js')}}"> </script>
-      <script type="text/javascript" src="{{asset('js/JFileChooser.js')}}"> </script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-</body>
-</html>
+      @push('javascript','<script src="' .asset('js/jquery-3.2.1.min.js'). '"> </script>')
+      @push('javascript', '<script type="text/javascript" src="' .asset('js/JFileChooser.js'). '"> </script>')
+
+      
+      
+      

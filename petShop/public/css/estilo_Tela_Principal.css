@@ -41,7 +41,7 @@ html {
 
 	text-decoration: none;
 	display: block;
-	padding: 10px;
+	padding: 5px 10px;
 	color: white;
 	font-family: sans-serif;
 	font-size: 14pt;
@@ -125,7 +125,9 @@ html {
 #logout{
 
 	float: right;
-	padding-right: 5px;
+	padding: 2px;
+	margin-right: 10px;
+	color: white;
 }
 
 /*Coloquei uma posiçao absoluta, defini uma altura, coloquei a largura do tamanho da largura max da tela que deixada no width do body, coloquei uma imagem de fundo*/

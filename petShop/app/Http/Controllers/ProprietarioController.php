@@ -24,13 +24,14 @@ class ProprietarioController extends Controller
             'data' => 'required',
             'cep' => 'required|numeric',
             'telefone' => 'required|numeric',
-            'email' => 'required|email'
+            'email' => 'required|email',
+            'imagem' => 'image'
             ]);
 
             $extesao = $request->imagem->extension();
             $nomeDaImagem = $request->cpf;
 
-            $request->imagem->storeas('app/public', "$nomeDaImagem."."$extesao");
+            $request->imagem->storeas('public', "$nomeDaImagem."."$extesao");
 
         echo "<h1> Aqui eu irei salvar os dados do cliente no Banco de Dados";
     }

@@ -16,7 +16,8 @@ Route::group(['prefix' => '/'], function() {
     
     Route::get('/ajuda','Controller@homepage');
     Route::get('/','LoginController@fazerLogin');
-    Route::post('/verificarLogin', 'LoginController@verificarLogin')->name('validarLogin');
+    Route::post('/TelaPrincipal', 'LoginController@verificarLogin')->name('validarLogin');
+    Route::post('/', 'LoginController@sair')->name('redirecionarPagina');
     
 });
 
