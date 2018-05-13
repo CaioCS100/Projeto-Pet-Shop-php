@@ -32,6 +32,7 @@
                         <input type="text" class="form-control" id="idNomeAnimal" name="nomeAnimal" placeholder="Digite seu nome completo" disabled>
                     </div>
                     
+                    
                     <div class="form-group col-md-2" id="radioButton">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="sexo" id="idMacho" value="M" disabled>
