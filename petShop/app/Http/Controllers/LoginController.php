@@ -6,27 +6,34 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function fazerLogin()
+    public function login()
     {
         return view('tela_Inicial');
     }
    
-    public function verificarLogin(Request $request)
+    public function logar(Request $request)
     {
-       if($request->cTexto == "caio" && $request->cSenha == "123")
+        if($request->cTexto == "caio" && $request->cSenha == "123")
        {
-            return view('tela_principal');  
+            session(['usuario' => $request->cTexto]);
+            return redirect()->route('paginaPrincipal');
        }
        else
        {
-            return redirect('/')->with('invalido', true);
+            return redirect()->back()->with('invalido', true);
        }       
     }
 
     public function sair()
     {
 
-        return redirect()->action('LoginController@fazerLogin');   
+        session()->flush();
+        return redirect()->action('LoginController@login'); 
+    }
+
+    public function redirecionarPagina()
+    {
+        return view('tela_principal');
     }
 
 }

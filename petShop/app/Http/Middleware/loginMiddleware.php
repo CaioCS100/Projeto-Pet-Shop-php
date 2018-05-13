@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class loginBlock
+class loginMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,11 @@ class loginBlock
      */
     public function handle($request, Closure $next)
     {
-        User::guest()
+        if(!session('usuario'))
+        {
+            return redirect()->route('paginaInicial');
+        }
+        
         return $next($request);
     }
 }

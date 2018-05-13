@@ -56,7 +56,7 @@
                             <li><a href="#">Procurar Consulta</a></li>
                         </ul>
                     </li>
-                    <form method="POST" action="{{ route('redirecionarPagina') }}">
+                    <form method="POST" action="{{ route('sair') }}">
                             {{csrf_field()}}
                         <li><button type="submit" class="btn btn-outline-dark" id="logout"> Logout </button></li>
                     </form>

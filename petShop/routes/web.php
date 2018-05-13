@@ -15,27 +15,25 @@
 Route::group(['prefix' => '/'], function() {
     
     Route::get('/ajuda','Controller@homepage');
-    Route::get('/','LoginController@fazerLogin');
-    Route::post('/TelaPrincipal', 'LoginController@verificarLogin')->name('validarLogin');
-    Route::post('/', 'LoginController@sair')->name('redirecionarPagina');
-    
+    Route::get('/','LoginController@login')->name('paginaInicial');
+    Route::post('/Logar', 'LoginController@logar')->name('validarLogin');
+    Route::post('/', 'LoginController@sair')->name('sair');
+    Route::get('/TelaPrincipal', 'LoginController@redirecionarPagina')->name('paginaPrincipal')->middleware('login');
 });
 
-Route::group(['prefix' => 'cliente'], function() {
+Route::group(['prefix' => 'cliente','middleware' => ['login']], function() {
     
     Route::get('/Cadastrar','ProprietarioController@chamarTelaCadastroCliente')->name('cadastrarDono');
     Route::get('/ProcurarDono','ProprietarioController@chamarTelaProcurarClientes')->name('procurarDono');
     Route::post('/SalvarCliente','ProprietarioController@addNovoCliente')->name('salvarDono');
-    
 });
 
 
-Route::group(['prefix' => 'animal'], function() {
-    
+Route::group(['prefix' => 'animal','middleware' => ['login']], function() {
     
     Route::get('/Cadastrar','AnimalController@chamarTelaCadastroAnimal')->name('cadastrarAnimal');
-    
+    Route::post('/SalvarAnimal','AnimalController@addNovoAnimal')->name('salvarAnimal');
 });
 
 
-Route::get('/Caixa','CaixaController@abrirCaixa')->name('abrirCaixa');
+Route::get('/Caixa','CaixaController@abrirCaixa')->name('abrirCaixa')->middleware('login');

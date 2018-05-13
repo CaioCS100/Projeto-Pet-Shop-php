@@ -48,7 +48,7 @@ body{
 
 #botao-procurar-animais{
 
-    background: url("../imagens/procurar_pet.png") no-repeat;
+    background: url("../imagens/procurar_pet_menor.png") no-repeat;
     height: 54px;
     width: 54px;
 }
@@ -84,7 +84,6 @@ body{
 
 #tituloCampoSexo{
 
-    position: absolute;
-    left: 690px;
-    top: 177px;    
+    position: relative;
+    left: 550px;;
 }

@@ -9,7 +9,7 @@
 
                   @if($errors->any())
                     <div class="alert alert-danger" role="alert">
-                      <strong>Erro!</strong>
+                      <strong>Erro ao cadastrar Dono!</strong>
                       @foreach($errors->all() as $erro)
                         <p> {{ $erro }} </p>
                       @endforeach
@@ -89,10 +89,9 @@
 
                 <button type="button" class="btn btn-primary" id="botao-novo-cadastro" onclick="ativarCampos()" data-toggle="tooltip" data-placement="top" title="Novo Cadastro"></button>
                 <button type="submit" class="btn btn-primary" id="botao-salvar" data-toggle="tooltip" data-placement="top" title="Salvar" disabled></button>
-                <button type="button" class="btn btn-primary" id="botao-procurar-clientes" onclick="redirecionar()" data-toggle="tooltip" data-placement="top" title="Procurar Clientes"></button>
-                <button type="button" class="btn btn-primary" id="botao-voltar" onclick="" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
+                <button type="button" class="btn btn-primary" id="botao-procurar-clientes" onclick="window.location.href='{{ route('procurarDono')}}'" data-toggle="tooltip" data-placement="top" title="Procurar Clientes"></button>
+                <button type="button" class="btn btn-primary" id="botao-voltar" onclick="window.location.href='{{ route('paginaPrincipal')}}'" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
                   <fieldset>
-              </form>
             @endsection
        
               @push('javascript', '<script src="' . asset('js/jquery-3.2.1.min.js'). '"> </script>')

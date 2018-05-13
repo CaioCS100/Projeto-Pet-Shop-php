@@ -18,13 +18,3 @@ function ativarCampos()
     $('#botao-procurar-clientes').prop('disabled', true);
     $('#idNome').focus();
 }
-
-function voltarParaTelaInicial()
-{
-    window.location.href = "../"
-}
-
-function redirecionar()
-{
-    window.location.href = "ProcurarDono";
-}
