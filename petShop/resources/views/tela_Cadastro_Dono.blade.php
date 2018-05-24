@@ -2,6 +2,15 @@
     @push('css', '<link rel="stylesheet" href="' .asset('css/estilo_Tela_Cadastro_Dono.css'). '"/>')
 
       @section('Menu')
+
+     
+
+      @if(session('cadastrado'))
+        <div class="alert alert-success" role="alert" id="temporario">
+            <strong>Usuário Cadastrado com Sucesso!</strong>
+        </div>
+      @endif
+
         <form method="POST" action=" {{ route('salvarDono') }} " enctype="multipart/form-data">
             {{ csrf_field() }}
             <fieldset>
@@ -22,7 +31,7 @@
                     </div>
                     <div class="form-group col-md-4">
                       <label for="idCPF">CPF<span class="asterisco">*</span>:</label>
-                      <input type="number" class="form-control" id="idCPF" name="cpf" placeholder="Digite seu CPF" disabled>
+                      <input type="text" class="form-control" id="idCPF" name="cpf" placeholder="Digite seu CPF" disabled>
                     </div>
                     <div class="form-group col-md-3">
                       <label for="idData">Data de Nascimento<span class="asterisco">*</span>:</label>
@@ -33,11 +42,11 @@
                 <div class="form-row">
                         <div class="form-group col-md-3">
                           <label for="idCEP">CEP<span class="asterisco">*</span>:</label>
-                          <input type="number" class="form-control" id="idCEP" name="cep" placeholder="Digite seu CEP" disabled>
+                          <input type="text" class="form-control" id="idCEP" name="cep" placeholder="Digite seu CEP" disabled>
                         </div>
                         <div class="form-group col-md-4">
                           <label for="idTelefone">Telefone<span class="asterisco">*</span>:</label>
-                          <input type="number" class="form-control" id="idTelefone" name="telefone" placeholder="Digite seu Telefone" disabled>
+                          <input type="text" class="form-control" id="idTelefone" name="telefone" placeholder="Digite seu Telefone" disabled>
                         </div>
                         <div class="form-group col-md-5">
                               <label for="idEmail">Email<span class="asterisco">*</span>:</label>
@@ -87,16 +96,20 @@
                   </div>
                 </div>
 
-                <button type="button" class="btn btn-primary" id="botao-novo-cadastro" onclick="ativarCampos()" data-toggle="tooltip" data-placement="top" title="Novo Cadastro"></button>
+                <button type="button" class="btn btn-primary" id="botao-novo-cadastro" onclick="ativarCampos();ativarMascaras();" data-toggle="tooltip" data-placement="top" title="Novo Cadastro"></button>
                 <button type="submit" class="btn btn-primary" id="botao-salvar" data-toggle="tooltip" data-placement="top" title="Salvar" disabled></button>
                 <button type="button" class="btn btn-primary" id="botao-procurar-clientes" onclick="window.location.href='{{ route('procurarDono')}}'" data-toggle="tooltip" data-placement="top" title="Procurar Clientes"></button>
                 <button type="button" class="btn btn-primary" id="botao-voltar" onclick="window.location.href='{{ route('paginaPrincipal')}}'" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
-                  <fieldset>
+            </fieldset>
+          </form>
+
             @endsection
        
               @push('javascript', '<script src="' . asset('js/jquery-3.2.1.min.js'). '"> </script>')
               @push('javascript', '<script type="text/javascript" src="' . asset('js/CadastroDono.js'). '"> </script>')
               @push('javascript', '<script type="text/javascript" src="' .asset('js/JFileChooser.js'). '"> </script>')
+              @push('javascript', '<script type="text/javascript" src="' .asset('js/jquery.mask.js'). '"> </script>')
+              
               
               
               

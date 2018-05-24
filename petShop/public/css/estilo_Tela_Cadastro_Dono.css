@@ -9,21 +9,6 @@ body{
     color: red;
 }
 
-input[type=number]::-webkit-inner-spin-button { 
-    -webkit-appearance: none;
-    cursor:pointer;
-    display:block;
-    width:8px;
-    color: #333;
-    text-align:center;
-    position:relative;
-}
-   input[type=number] { 
-   -moz-appearance: textfield;
-   appearance: textfield;
-   margin: 0; 
-}
-
 #image-holder{
 
     border: 1px black solid;
@@ -72,4 +57,19 @@ input[type=number]::-webkit-inner-spin-button {
     background: url("../imagens/botao_voltar.png") no-repeat;
     height: 54px;
     width: 54px;
+}
+
+/*Animação para aparecer e esconder a mensagem de cadastrado com sucesso */
+@keyframes hide {
+    from { opacity: 1 }
+    to   { opacity: 0 }
+}
+
+#temporario{
+
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    z-index: 10;
+    animation: hide 2s 2s forwards;
 }

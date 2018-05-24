@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Proprietario;
 
 class ProprietarioController extends Controller
 {
@@ -20,20 +21,53 @@ class ProprietarioController extends Controller
 
         $request -> validate([
             'nome' => 'required',
-            'cpf' => 'required|numeric',
+            'cpf' => 'required',
             'data' => 'required',
-            'cep' => 'required|numeric',
-            'telefone' => 'required|numeric',
+            'cep' => 'required',
+            'telefone' => 'required',
             'email' => 'required|email',
             'imagem' => 'image'
             ]);
 
+        $ddd = $request->telefone;
+        $ddd = str_replace("(","",$ddd);
+        $ddd = str_replace(")","",$ddd);
+        $ddd = explode(" ",$ddd);
+        $telefoneSemDDD = $ddd[1];
+        $ddd = $ddd[0];
+        $telefoneSemDDD = str_replace("-","",$telefoneSemDDD);
+        $cpfSemCaracterEspecial = $request->cpf;
+        $cpfSemCaracterEspecial = str_replace(".","",$cpfSemCaracterEspecial);
+        $cpfSemCaracterEspecial = str_replace("-","",$cpfSemCaracterEspecial);
+        $cepSemCaracterEspecial = $request->cep;
+        $cepSemCaracterEspecial = str_replace("-","",$cepSemCaracterEspecial);
+        $nomeDaImagem = "";
+       
+        if($request->imagem!=null)
+        {
             $extesao = $request->imagem->extension();
             $nomeDaImagem = $request->cpf;
-
             $request->imagem->storeas('public', "$nomeDaImagem."."$extesao");
+        }
 
-        echo "<h1> Aqui eu irei salvar os dados do cliente no Banco de Dados";
+        $nomeDono = new Proprietario;
+
+        $nomeDono->nome = $request->nome;
+        $nomeDono->cpf = $cpfSemCaracterEspecial;
+        $nomeDono->data_de_nascimento = $request->data;
+        $nomeDono->cep = $cepSemCaracterEspecial;
+        $nomeDono->telefone = $telefoneSemDDD;
+        $nomeDono->ddd = $ddd;
+        $nomeDono->email = $request->email;
+        $nomeDono->endereco = $request->endereco;
+        $nomeDono->bairro = $request->bairro;
+        $nomeDono->cidade = $request->cidade;
+        $nomeDono->uf = $request->uf;
+        $nomeDono->observacao_cliente = $request->obs;
+        $nomeDono->complemento = $request->complemento;
+        $nomeDono->nome_da_imagem = $nomeDaImagem;
+        $nomeDono->save(); 
+        return redirect()->route('cadastrarDono')->with('cadastrado', true);
     }
 
     public function UF()

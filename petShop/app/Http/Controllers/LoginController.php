@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Usuario;
 
 class LoginController extends Controller
 {
@@ -13,15 +14,17 @@ class LoginController extends Controller
    
     public function logar(Request $request)
     {
-        if($request->cTexto == "caio" && $request->cSenha == "123")
-       {
-            session(['usuario' => $request->cTexto]);
+        $usuario = Usuario::where('login',$request->cTexto)->where('senha',$request->cSenha)->first();
+
+        if($usuario!=null)
+        {
+            session(['usuario' => $usuario]);
             return redirect()->route('paginaPrincipal');
-       }
-       else
-       {
+        }
+        else
+        {
             return redirect()->back()->with('invalido', true);
-       }       
+        }       
     }
 
     public function sair()

@@ -14,9 +14,9 @@
         <h1> PetShop & CIA </h1> 
 
         @if(session('invalido'))
-        <div class="alert">
-            <strong>Login ou senha errada!</strong>
-        </div>
+            <div class="alert alert-success" role="alert" id="temporario">
+                <strong>Login ou senha errada!</strong>
+            </div>
         @endif
     
         

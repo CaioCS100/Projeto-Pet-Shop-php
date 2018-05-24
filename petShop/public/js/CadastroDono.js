@@ -18,3 +18,10 @@ function ativarCampos()
     $('#botao-procurar-clientes').prop('disabled', true);
     $('#idNome').focus();
 }
+
+function ativarMascaras()
+{
+    $('#idCPF').mask('000.000.000-00');
+    $('#idCEP').mask('00000-000');
+    $('#idTelefone').mask('(00) 0000-0000');
+}
