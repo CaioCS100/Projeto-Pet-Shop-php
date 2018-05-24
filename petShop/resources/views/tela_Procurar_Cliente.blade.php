@@ -14,27 +14,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>descrição</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>descrição</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td> alguma coisa</td>
-            <td>@twitter</td>
-            <td>descrição</td>
-        </tr>
+            @foreach($cliente as $dadostabela)
+                <tr>
+                    <th scope="row" onclick="alert('selecionar o id para mostrar esse valor');">{{$dadostabela['id']}}</th>
+                    <td onclick="alert('selecionar o id para mostrar esse valor');"> {{$dadostabela['nome']}} </td>
+                    <td onclick="alert('selecionar o id para mostrar esse valor');"> {{$dadostabela['telefone']}} </td>
+                    <td onclick="alert('selecionar o id para mostrar esse valor');"> {{$dadostabela['data_de_nascimento']}} </td>
+                    <td onclick="alert('selecionar o id para mostrar esse valor');"> {{$dadostabela['observacao_cliente']}} </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection('Menu')

@@ -14,7 +14,9 @@ class ProprietarioController extends Controller
 
     public function chamarTelaProcurarClientes()
     {
-        return view('tela_Procurar_Cliente');
+        //fazer um select e enviar para a outra pagina
+        $cliente = Proprietario::all();
+        return view('tela_Procurar_Cliente',['cliente'=>$cliente]);
     }
 
     public function addNovoCliente(Request $request){
