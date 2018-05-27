@@ -30,6 +30,7 @@ class CriandoTabelaClientes extends Migration
             $table->string('complemento');
             $table->string('nome_da_imagem')->default('');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

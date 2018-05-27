@@ -2,24 +2,16 @@
     @push('css', '<link rel="stylesheet" href="' .asset('css/estilo_Tela_Cadastro_Dono.css'). '"/>')
 
       @section('Menu')
-
-     
-
-      @if(session('cadastrado'))
-        <div class="alert alert-success" role="alert" id="temporario">
-            <strong>Usuário Alterado com Sucesso!</strong>
-        </div>
-      @endif
-
-        <form method="POST" action=" {{ route('salvarDono') }} " enctype="multipart/form-data">
+      
+        <form method="POST" action=" {{ route('atualizarCliente', ['id' => $cliente['id']]) }} " enctype="multipart/form-data">
             {{ csrf_field() }}
             <fieldset>
-                <legend id="titulo_Fieldset"> Mostrar de Cliente </legend>
+                <legend id="titulo_Fieldset"> Mostrar/Atualizar de Cliente </legend>
                   <div id="espaco">
 
                       @if($errors->any())
-                        <div class="alert alert-danger" role="alert">
-                          <strong>Erro ao cadastrar Dono!</strong>
+                        <div class="alert alert-danger temporario" role="alert">
+                          <strong>Erro em atualizar Dono!</strong>
                           @foreach($errors->all() as $erro)
                             <p> {{ $erro }} </p>
                           @endforeach
@@ -86,21 +78,20 @@
                     </div>
 
                     <div class="form-row">
-
                       <div class="form-group col-md-5">
                         <label for="idObs"><strong> Observações do cliente:</strong></label> <br/>
                         <textarea id="idObs" name="obs" rows="5" cols="100" disabled>{{old('obs',$cliente['observacao_cliente'])}} </textarea> <br/>
                       </div>
                       <div id="mostrarImagem" class="form-group col-md-4">
-                                <div id="image-holder"></div>
-                                <input type = "file" value = "Imagem" id="fileUpload" name="imagem" accept=".jpg, .jpeg, .png" disabled/>
+                                <div id="image-holder" style="color: #B0C4DE">{{old('imagem',$cliente['nome_da_imagem'])}}</div>
+                                <input type = "file" id="fileUpload" name="imagem" accept=".jpg, .jpeg, .png" disabled/>
                       </div>
                     </div>
 
-                    <button type="button" class="btn btn-primary" id="botao-editar" onclick="ativarCampos();ativarMascaras();" data-toggle="tooltip" data-placement="top" title="Novo Cadastro"></button>
+                    <button type="button" class="btn btn-primary" id="botao-editar" onclick="ativarCampos();ativarMascaras();" data-toggle="tooltip" data-placement="top" title="Editar Campos"></button>
                     <button type="submit" class="btn btn-primary" id="botao-salvar" data-toggle="tooltip" data-placement="top" title="Salvar" disabled></button>
-                    <button type="button" class="btn btn-primary" id="botao-excluir" onclick="window.location.href='{{ route('procurarDono')}}'" data-toggle="tooltip" data-placement="top" title="Procurar Clientes"></button>
-                    <button type="button" class="btn btn-primary" id="botao-voltar" onclick="window.location.href='{{ route('paginaPrincipal')}}'" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
+                    <button type="button" class="btn btn-primary" id="botao-excluir" onclick="window.location.href='{{ route('excluirCliente',['id' => $cliente['id']])}}'" data-toggle="tooltip" data-placement="top" title="Editar Clientes"></button>
+                    <button type="button" class="btn btn-primary" id="botao-voltar" onclick="window.location.href='{{ route('procurarDono')}}'" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
                   </div>
             </fieldset>
           </form>

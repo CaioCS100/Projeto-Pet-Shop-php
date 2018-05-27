@@ -27,6 +27,7 @@ class CriandoTabelaAnimais extends Migration
             $table->integer('id_especie');
             $table->integer('id_raca');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

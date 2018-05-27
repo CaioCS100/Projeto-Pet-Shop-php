@@ -21,3 +21,20 @@ $("#fileUpload").on('change', function () {
         alert("Este navegador nao suporta FileReader.");
     }
 });
+
+window.onload = function(){
+    var valor = $("#image-holder").text();
+    if(valor!=null && valor!='')
+    {
+        var image_holder = $("#image-holder");
+        image_holder.empty();
+        $("<img />", {
+            "src": "http://127.0.0.1:8000/storage/"+valor,
+            "class": "thumb-image",
+            "width": "250px",
+            "height":"250px",
+            "border": "none"
+        }).appendTo(image_holder);
+        image_holder.show();
+    }
+}

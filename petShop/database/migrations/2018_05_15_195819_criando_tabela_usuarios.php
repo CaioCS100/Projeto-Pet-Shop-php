@@ -18,6 +18,7 @@ class CriandoTabelaUsuarios extends Migration
             $table->string('login');
             $table->string('senha');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

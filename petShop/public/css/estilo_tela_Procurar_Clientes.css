@@ -4,3 +4,18 @@
 
     margin-top: 5%;
 }
+
+/*Animação para aparecer e esconder a mensagem de cadastrado com sucesso */
+@keyframes hide {
+    from { opacity: 1 }
+    to   { opacity: 0 }
+}
+
+.temporario{
+
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    z-index: 10;
+    animation: hide 2s 2s forwards;
+}

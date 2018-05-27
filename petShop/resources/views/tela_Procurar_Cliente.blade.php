@@ -3,6 +3,19 @@
 @push('css',' <link rel="stylesheet" href="' .asset('css/estilo_Tela_Procurar_Clientes.css'). '" ')
 
 @section('Menu')
+
+    @if(session('editado'))
+        <div class="alert alert-success temporario" role="alert">
+            <strong>Usuário Alterado com Sucesso!</strong>
+        </div>
+    @endif
+
+    @if(session('excluido'))
+        <div class="alert alert-success temporario" role="alert">
+            <strong>Usuário Excluido com Sucesso!</strong>
+        </div>
+    @endif
+
     <table class="table table-hover" id="tabela">
         <thead>
         <tr>

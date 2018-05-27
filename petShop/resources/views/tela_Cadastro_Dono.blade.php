@@ -6,7 +6,7 @@
      
 
       @if(session('cadastrado'))
-        <div class="alert alert-success" role="alert" id="temporario">
+        <div class="alert alert-success temporario" role="alert">
             <strong>Usuário Cadastrado com Sucesso!</strong>
         </div>
       @endif
@@ -17,7 +17,7 @@
                 <legend id="titulo_Fieldset"> Cadastro de Cliente </legend>
                   <div id="espaco">
                     @if($errors->any())
-                      <div class="alert alert-danger" role="alert">
+                      <div class="alert alert-danger temporario" role="alert">
                         <strong>Erro ao cadastrar Dono!</strong>
                         @foreach($errors->all() as $erro)
                           <p> {{ $erro }} </p>
@@ -92,7 +92,7 @@
                     </div>
                     <div id="mostrarImagem" class="form-group col-md-4">
                               <div id="image-holder"></div>
-                              <input type = "file" value = "Imagem" id="fileUpload" name="imagem" accept=".jpg, .jpeg, .png" disabled/>
+                              <input type = "file" id="fileUpload" name="imagem" accept=".jpg, .jpeg, .png" disabled/>
                     </div>
                   </div>
 

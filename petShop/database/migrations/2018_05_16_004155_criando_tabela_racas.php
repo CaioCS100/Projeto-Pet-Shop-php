@@ -18,6 +18,7 @@ class CriandoTabelaRacas extends Migration
             $table->integer('id_especie');
             $table->string('nome_raca');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -77,7 +77,7 @@ body{
     to   { opacity: 0 }
 }
 
-#temporario{
+.temporario{
 
     position: absolute;
     top: 45%;

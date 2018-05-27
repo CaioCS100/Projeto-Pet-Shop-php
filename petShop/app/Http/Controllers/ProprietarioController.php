@@ -38,6 +38,7 @@ class ProprietarioController extends Controller
             $extesao = $request->imagem->extension();
             $nomeDaImagem = $request->cpf;
             $request->imagem->storeas('public', "$nomeDaImagem."."$extesao");
+            $nomeDaImagem = "$nomeDaImagem." . "$extesao";
         }
 
         $nomeDono = new Proprietario;
@@ -69,11 +70,56 @@ class ProprietarioController extends Controller
         $dadosDono->ddd = $this->mask($dadosDono->ddd,'(##) ');
         $dadosDono->telefone = $dadosDono->ddd . $this->mask($dadosDono->telefone,'####-####');
         return view('tela_Mostrar_Editar_Dono',$dadosUF,['cliente'=>$dadosDono]);
-        // echo"$dadosDono->cpf";
-        // echo"<br/>";
-        // echo"$dadosDono->cep";
-        // echo"<br/>";
-        //echo"$dadosDono->data_de_nascimento";
+    }
+
+    public function editarCliente(Request $request,$id)
+    {
+        // atualizar cadastro e redirecionar para a tela de procurar clietnes e fazer uma mensagem na tela
+        // que some depois de algum tempo com a descrição "alteração feita com sucesso" ou algo do tipo
+        $request -> validate([
+            'nome' => 'required',
+            'cpf' => 'required',
+            'data' => 'required',
+            'cep' => 'required',
+            'telefone' => 'required',
+            'email' => 'required|email',
+            'imagem' => 'image'
+            ]);
+
+        $telefone_DDD = $this->retirarDDDEMaskTelefone($request->telefone);
+        $nomeDaImagem = "";
+       
+        if($request->imagem!=null)
+        {
+            $extesao = $request->imagem->extension();
+            $nomeDaImagem = $request->cpf;
+            $request->imagem->storeas('public', "$nomeDaImagem."."$extesao");
+            $nomeDaImagem = "$nomeDaImagem." . "$extesao";
+        }
+        $dadosAtualizadosDono = Proprietario::find($id);
+
+        $dadosAtualizadosDono->nome = $request->nome;
+        $dadosAtualizadosDono->cpf = $this->retirarMaskCpf($request->cpf);
+        $dadosAtualizadosDono->data_de_nascimento = $request->data;
+        $dadosAtualizadosDono->cep = $this->retirarMaskCEP($request->cep);
+        $dadosAtualizadosDono->telefone = $telefone_DDD[1];
+        $dadosAtualizadosDono->ddd = $telefone_DDD[0];
+        $dadosAtualizadosDono->email = $request->email;
+        $dadosAtualizadosDono->endereco = $request->endereco;
+        $dadosAtualizadosDono->bairro = $request->bairro;
+        $dadosAtualizadosDono->cidade = $request->cidade;
+        $dadosAtualizadosDono->uf = $request->uf;
+        $dadosAtualizadosDono->observacao_cliente = $request->obs;
+        $dadosAtualizadosDono->complemento = $request->complemento;
+        $dadosAtualizadosDono->nome_da_imagem = $nomeDaImagem;
+        $dadosAtualizadosDono->save(); 
+        return redirect()->route('procurarDono')->with('editado', true);
+    }
+
+    function deletarCliente($id)
+    {
+        Proprietario::destroy($id);
+        return redirect()->route('procurarDono')->with('excluido', true);
     }
 
     function retirarDDDEMaskTelefone($val)

@@ -27,6 +27,8 @@ Route::group(['prefix' => 'cliente','middleware' => ['login']], function() {
     Route::get('/ProcurarDono','ProprietarioController@chamarTelaProcurarClientes')->name('procurarDono');
     Route::post('/SalvarCliente','ProprietarioController@addNovoCliente')->name('salvarDono');
     Route::get('/mostrarCliente/{id}','ProprietarioController@mostrarCliente')->name('showCliente');
+    Route::post('/editarCliente/{id}','ProprietarioController@editarCliente')->name('atualizarCliente');
+    Route::get('excluirCliente/{id}','ProprietarioController@deletarCliente')->name('excluirCliente');
 });
 
 

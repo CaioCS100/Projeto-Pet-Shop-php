@@ -17,6 +17,7 @@ class CriandoTabelaEspecies extends Migration
             $table->increments('id_especie');
             $table->string('nome_especie');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
