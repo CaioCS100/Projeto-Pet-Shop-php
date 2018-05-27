@@ -59,6 +59,18 @@ body{
     width: 54px;
 }
 
+#botao-editar{
+    background: url("../Imagens/botao-editar.png") no-repeat;
+    height: 54px;
+    width: 54px;
+}
+
+#botao-excluir{
+    background: url("../Imagens/botao-excluir.png") no-repeat;
+    height: 54px;
+    width: 54px;
+}
+
 /*Animação para aparecer e esconder a mensagem de cadastrado com sucesso */
 @keyframes hide {
     from { opacity: 1 }
@@ -72,4 +84,8 @@ body{
     left: 40%;
     z-index: 10;
     animation: hide 2s 2s forwards;
+}
+
+#espaco{
+    padding: 10px;
 }

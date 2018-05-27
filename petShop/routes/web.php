@@ -26,6 +26,7 @@ Route::group(['prefix' => 'cliente','middleware' => ['login']], function() {
     Route::get('/Cadastrar','ProprietarioController@chamarTelaCadastroCliente')->name('cadastrarDono');
     Route::get('/ProcurarDono','ProprietarioController@chamarTelaProcurarClientes')->name('procurarDono');
     Route::post('/SalvarCliente','ProprietarioController@addNovoCliente')->name('salvarDono');
+    Route::get('/mostrarCliente/{id}','ProprietarioController@mostrarCliente')->name('showCliente');
 });
 
 

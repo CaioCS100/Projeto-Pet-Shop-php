@@ -14,7 +14,6 @@ class ProprietarioController extends Controller
 
     public function chamarTelaProcurarClientes()
     {
-        //fazer um select e enviar para a outra pagina
         $cliente = Proprietario::all();
         return view('tela_Procurar_Cliente',['cliente'=>$cliente]);
     }
@@ -31,18 +30,7 @@ class ProprietarioController extends Controller
             'imagem' => 'image'
             ]);
 
-        $ddd = $request->telefone;
-        $ddd = str_replace("(","",$ddd);
-        $ddd = str_replace(")","",$ddd);
-        $ddd = explode(" ",$ddd);
-        $telefoneSemDDD = $ddd[1];
-        $ddd = $ddd[0];
-        $telefoneSemDDD = str_replace("-","",$telefoneSemDDD);
-        $cpfSemCaracterEspecial = $request->cpf;
-        $cpfSemCaracterEspecial = str_replace(".","",$cpfSemCaracterEspecial);
-        $cpfSemCaracterEspecial = str_replace("-","",$cpfSemCaracterEspecial);
-        $cepSemCaracterEspecial = $request->cep;
-        $cepSemCaracterEspecial = str_replace("-","",$cepSemCaracterEspecial);
+        $telefone_DDD = $this->retirarDDDEMaskTelefone($request->telefone);
         $nomeDaImagem = "";
        
         if($request->imagem!=null)
@@ -55,11 +43,11 @@ class ProprietarioController extends Controller
         $nomeDono = new Proprietario;
 
         $nomeDono->nome = $request->nome;
-        $nomeDono->cpf = $cpfSemCaracterEspecial;
+        $nomeDono->cpf = $this->retirarMaskCpf($request->cpf);
         $nomeDono->data_de_nascimento = $request->data;
-        $nomeDono->cep = $cepSemCaracterEspecial;
-        $nomeDono->telefone = $telefoneSemDDD;
-        $nomeDono->ddd = $ddd;
+        $nomeDono->cep = $this->retirarMaskCEP($request->cep);
+        $nomeDono->telefone = $telefone_DDD[1];
+        $nomeDono->ddd = $telefone_DDD[0];
         $nomeDono->email = $request->email;
         $nomeDono->endereco = $request->endereco;
         $nomeDono->bairro = $request->bairro;
@@ -70,6 +58,76 @@ class ProprietarioController extends Controller
         $nomeDono->nome_da_imagem = $nomeDaImagem;
         $nomeDono->save(); 
         return redirect()->route('cadastrarDono')->with('cadastrado', true);
+    }
+
+    public function mostrarCliente(Request $request,$id)
+    {
+        $dadosDono = Proprietario::where('id',$id)->first(); 
+        $dadosUF['allUfs'] = $this->UF();
+        $dadosDono->cpf = $this->mask($dadosDono->cpf,'###.###.###-##');
+        $dadosDono->cep = $this->mask($dadosDono->cep,'#####-###');
+        $dadosDono->ddd = $this->mask($dadosDono->ddd,'(##) ');
+        $dadosDono->telefone = $dadosDono->ddd . $this->mask($dadosDono->telefone,'####-####');
+        return view('tela_Mostrar_Editar_Dono',$dadosUF,['cliente'=>$dadosDono]);
+        // echo"$dadosDono->cpf";
+        // echo"<br/>";
+        // echo"$dadosDono->cep";
+        // echo"<br/>";
+        //echo"$dadosDono->data_de_nascimento";
+    }
+
+    function retirarDDDEMaskTelefone($val)
+    {
+        $ddd = $val;
+        $ddd = str_replace("(","",$ddd);
+        $ddd = str_replace(")","",$ddd);
+        $ddd = explode(" ",$ddd);
+        $telefoneSemDDD = $ddd[1];
+        $ddd = $ddd[0];
+        $telefoneSemDDD = str_replace("-","",$telefoneSemDDD);
+
+        return array($ddd,$telefoneSemDDD);
+    }
+
+    function retirarMaskCEP($val)
+    {
+        $cepSemCaracterEspecial = $val;
+        $cepSemCaracterEspecial = str_replace("-","",$cepSemCaracterEspecial);
+
+        return $cepSemCaracterEspecial;
+    }
+
+    function retirarMaskCpf($val)
+    {
+        $cpfSemCaracterEspecial = $val;
+        $cpfSemCaracterEspecial = str_replace(".","",$cpfSemCaracterEspecial);
+        $cpfSemCaracterEspecial = str_replace("-","",$cpfSemCaracterEspecial);
+
+        return $cpfSemCaracterEspecial;
+    }
+
+    function mask($val, $mask)
+    {
+        $maskared = '';
+        $k = 0;
+        for($i = 0; $i<=strlen($mask)-1; $i++)
+        {
+            if($mask[$i] == '#')
+            {
+                if(isset($val[$k]))
+                {
+                    $maskared .= $val[$k++];
+                }
+            }
+            else
+            {
+                if(isset($mask[$i]))
+                {
+                    $maskared .= $mask[$i];
+                }
+            }
+        }
+        return $maskared;
     }
 
     public function UF()

@@ -15,12 +15,12 @@
         </thead>
         <tbody>
             @foreach($cliente as $dadostabela)
-                <tr>
-                    <th scope="row" onclick="alert('selecionar o id para mostrar esse valor');">{{$dadostabela['id']}}</th>
-                    <td onclick="alert('selecionar o id para mostrar esse valor');"> {{$dadostabela['nome']}} </td>
-                    <td onclick="alert('selecionar o id para mostrar esse valor');"> {{$dadostabela['telefone']}} </td>
-                    <td onclick="alert('selecionar o id para mostrar esse valor');"> {{$dadostabela['data_de_nascimento']}} </td>
-                    <td onclick="alert('selecionar o id para mostrar esse valor');"> {{$dadostabela['observacao_cliente']}} </td>
+                <tr onclick="window.location.href='{{ route('showCliente',['id' => $dadostabela->id]) }}'">
+                    <th scope="row">{{$dadostabela['id']}}</th>
+                    <td> {{$dadostabela['nome']}} </td>
+                    <td> {{$dadostabela['telefone']}} </td>
+                    <td> {{$dadostabela['data_de_nascimento']}} </td>
+                    <td> {{$dadostabela['observacao_cliente']}} </td>
                 </tr>
             @endforeach
         </tbody>

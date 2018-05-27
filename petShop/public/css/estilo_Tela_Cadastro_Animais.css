@@ -59,6 +59,11 @@ body{
     height: 54px;
     width: 54px;
 }
+#botao-editar{
+    background: url("../Imagens/botao_editar_menor.jpg") no-repeat;
+    height: 54px;
+    width: 54px;
+}
 
 #image-holder{
 
@@ -86,4 +91,8 @@ body{
 
     position: relative;
     left: 550px;;
+}
+
+#espaco{
+    padding: 10px;
 }
