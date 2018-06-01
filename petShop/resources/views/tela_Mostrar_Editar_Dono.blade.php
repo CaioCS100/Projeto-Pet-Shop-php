@@ -90,7 +90,7 @@
 
                     <button type="button" class="btn btn-primary" id="botao-editar" onclick="ativarCampos();ativarMascaras();" data-toggle="tooltip" data-placement="top" title="Editar Campos"></button>
                     <button type="submit" class="btn btn-primary" id="botao-salvar" data-toggle="tooltip" data-placement="top" title="Salvar" disabled></button>
-                    <button type="button" class="btn btn-primary" id="botao-excluir" onclick="window.location.href='{{ route('excluirCliente',['id' => $cliente['id']])}}'" data-toggle="tooltip" data-placement="top" title="Editar Clientes"></button>
+                    <button type="button" class="btn btn-primary" id="botao-excluir" onclick="confirmExclusao({{$cliente['id']}});" data-toggle="tooltip" data-placement="top" title="Editar Clientes"></button>
                     <button type="button" class="btn btn-primary" id="botao-voltar" onclick="window.location.href='{{ route('procurarDono')}}'" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
                   </div>
             </fieldset>

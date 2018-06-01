@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriandoTabelaRacas extends Migration
+class CriandoTabelRacas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CriandoTabelaRacas extends Migration
      */
     public function up()
     {
-        Schema::create('raca', function (Blueprint $table) {
-            $table->increments('id_raca');
-            $table->integer('id_especie');
-            $table->string('nome_raca');
+        Schema::create('racas', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('especie_id')->unsigned();
+            $table->foreign('especie_id')->references('id')->on('especies')->onDelete('cascade');
+            $table->string('nome_raca',100)->unique();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +30,6 @@ class CriandoTabelaRacas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('raca');
+        Schema::dropIfExists('racas');
     }
 }

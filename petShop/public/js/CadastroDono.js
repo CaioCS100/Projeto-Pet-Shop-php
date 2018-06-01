@@ -27,3 +27,11 @@ function ativarMascaras()
     $('#idCEP').mask('00000-000');
     $('#idTelefone').mask('(00) 0000-0000');
 }
+
+function confirmExclusao(id)
+{
+    if(confirm("Tem certeza que deseja excluir esse Cliente ?"))
+    {
+        location.href = "../excluirCliente/"+id;
+    }
+}

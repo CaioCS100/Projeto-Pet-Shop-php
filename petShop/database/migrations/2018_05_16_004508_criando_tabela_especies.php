@@ -14,8 +14,8 @@ class CriandoTabelaEspecies extends Migration
     public function up()
     {
         Schema::create('especies', function (Blueprint $table) {
-            $table->increments('id_especie');
-            $table->string('nome_especie');
+            $table->increments('id');
+            $table->string('nome_especie',100)->unique();
             $table->timestamps();
             $table->softDeletes();
         });

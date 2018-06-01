@@ -22,10 +22,49 @@
                                 <input type="text" class="form-control" id="idNomeDono" name="nomeDono" placeholder="Clique no botão ao lado para encontrar o cliente desejado" disabled>
                             </div>
                             <div class="form-group col-md-2">
-                            <button type="button" class="btn btn-secondary btn-lg" id="botaoPesquisar" disabled>Pesquisar Dono</button>
+                            <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#nomeDonoModal" id="botaoPesquisar"  disabled>Pesquisar Dono</button>
                             </div>
+                            <div class="modal fade" id="nomeDonoModal" tabindex="-1" role="dialog" aria-labelledby="nomeDonoModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="nomeDonoModalLabel">Selecione um Cliente</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                            <table class="table table-hover" id="tabela">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">Nome</th>
+                                                        <th scope="col">Telefone</th>
+                                                        <th scope="col">Data de Nascimento</th>
+                                                        <th scope="col">Descrição</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($cliente as $dadostabela)
+                                                            <tr onclick="selecionarLinha();setNome('{{ $dadostabela['nome'] }}');">
+                                                                <th scope="row">{{$dadostabela['id']}}</th>
+                                                                <td> {{$dadostabela['nome']}} </td>
+                                                                <td> {{$dadostabela['telefone']}} </td>
+                                                                <td> {{$dadostabela['data_de_nascimento']}} </td>
+                                                                <td> {{$dadostabela['observacao_cliente']}} </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                            </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-primary" onclick="selecionarDono()">Selecionar</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                         </div>
-
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="idNomeAnimal">Nome do Animal<span class="asterisco">*</span>:</label>
@@ -62,14 +101,48 @@
                                 <input type="text" class="form-control" id="idEspecie" name="especie" disabled>
                             </div>
                             <div class="form-group col-md-1">
-                                <button type="button" class="btn btn-secondary" id="botao-Procurar" data-toggle="tooltip" data-placement="top" title="Procurar Espécies" disabled></button>
+                                <button type="button" class="btn btn-secondary botao-Procurar" id="botao-Procurar-especie" data-toggle="modal" data-target="#especieModal" data-placement="top" title="Procurar Espécies" disabled></button>
                             </div>
+                            <div class="modal fade" id="especieModal" tabindex="-1" role="dialog" aria-labelledby="especieModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="especieModalLabel">Selecione uma Espécie</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                            <table class="table table-hover" id="tabela">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">Nome</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($especie as $dadostabela)
+                                                            <tr onclick="selecionarLinha();setNome('{{ $dadostabela['nome'] }}');">
+                                                                <th scope="row">{{$dadostabela['id_especie']}}</th>
+                                                                <td> {{$dadostabela['nome_especie']}} </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                            </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-primary" onclick="">Selecionar</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             <div class="form-group col-md-5">
                                 <label for="idRaca">Raça<span class="asterisco">*</span>:</label>
                                 <input type="text" class="form-control" id="idRaca" name="raca" disabled>
                             </div>
                             <div class="form-group col-md-1">
-                                <button type="button" class="btn btn-secondary" id="botao-Procurar" data-toggle="tooltip" data-placement="top" title="Procurar Raças" disabled></button>
+                                <button type="button" class="btn btn-secondary botao-Procurar" id="botao-Procurar-raca" data-toggle="tooltip" data-placement="top" title="Procurar Raças" disabled></button>
                             </div> 
 
                         </div>
@@ -89,7 +162,7 @@
                                         <label class="form-check-label" for="idNao">Não</label>
                                     </div> 
                                     <br/>
-                                    <input type="text" class="form-control" disabled/>
+                                    <input type="text" class="form-control" id="idInfoPet" disabled/>
                             </div>
                             <div class="form-group col-md-2"> </div>
                             <div class="form-group col-md-5">
@@ -97,7 +170,7 @@
                                 <input type="text" class="form-control" id="idCor" name="cor" disabled>
                             </div>
                             <div class="form-group col-md-1">
-                                    <button type="button" class="btn btn-secondary" id="botao-Procurar" data-toggle="tooltip" data-placement="top" title="Procurar Raças" disabled></button>
+                                    <button type="button" class="btn btn-secondary botao-Procurar" id="botao-Cor" data-toggle="tooltip" data-placement="top" title="Procurar Raças" disabled></button>
                             </div>
                         
                         </div>
@@ -125,7 +198,9 @@
 
       @push('javascript','<script src="' .asset('js/jquery-3.2.1.min.js'). '"> </script>')
       @push('javascript', '<script type="text/javascript" src="' .asset('js/JFileChooser.js'). '"> </script>')
-
+      @push('javascript', '<script type="text/javascript" src="' .asset('js/CadastroAnimal.js'). '"></script')
+      @push('javascrupt','<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>')
+      @push('javascript','<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>')  
       
       
       

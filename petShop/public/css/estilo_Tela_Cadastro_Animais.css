@@ -23,7 +23,7 @@ body{
     font-size: 15pt;
 }
 
-#botao-Procurar{
+.botao-Procurar{
 
     background: url("../Imagens/lupa.png") no-repeat;
     height: 42px;
@@ -95,4 +95,8 @@ body{
 
 #espaco{
     padding: 10px;
+}
+
+.colorir{
+    background: #dee2e6;
 }
