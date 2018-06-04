@@ -29,7 +29,19 @@
                     <li><a href="#"> Animais </a>
                         <ul class="sub-menu clearfix" id="comprimento-box-animal">
                             <li><a href="{{ route('cadastrarAnimal') }}">Adicionar Novo Animal</a></li>
-                            <li><a href="#">Procurar Animal</a></li>
+                            <li><a href="{{ route('procurarAnimais') }}">Procurar Animal</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> Espécie </a>
+                        <ul class="sub-menu clearfix" id="comprimento-box-especie">
+                            <li><a href="#">Adicionar Nova Espécie</a></li>
+                            <li><a href="#">Procurar Espécie</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> Raça </a>
+                        <ul class="sub-menu clearfix" id="comprimento-box-raca">
+                            <li><a href="#">Adicionar Nova Raça</a></li>
+                            <li><a href="#">Procurar Raça</a></li>
                         </ul>
                     </li>
                     <li><a href="#"> Produtos </a>
@@ -54,6 +66,16 @@
                         <ul class="sub-menu clearfix" id="comprimento-box-consulta">
                             <li><a href="#">Nova Consulta</a></li>
                             <li><a href="#">Procurar Consulta</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> Gerar Relatório </a>
+                        <ul class="sub-menu clearfix" id="comprimento-box-relatorio">
+                            <li><a href="#">Gerar Relatório dos clientes</a></li>
+                            <li><a href="#">Gerar Relatório dos animais</a></li>
+                            <li><a href="#">Gerar Relatório dos funcionários</a></li>
+                            <li><a href="#">Gerar Relatório dos produtos</a></li>
+                            <li><a href="#">Gerar Relatório dos serviços</a></li>
+                            <li><a href="#">Gerar Relatório das consultas</a></li>
                         </ul>
                     </li>
                     <form method="POST" action="{{ route('sair') }}">

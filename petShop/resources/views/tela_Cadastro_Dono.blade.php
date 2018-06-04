@@ -3,8 +3,6 @@
 
       @section('Menu')
 
-     
-
       @if(session('cadastrado'))
         <div class="alert alert-success temporario" role="alert">
             <strong>Usuário Cadastrado com Sucesso!</strong>

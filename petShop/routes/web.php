@@ -36,6 +36,7 @@ Route::group(['prefix' => 'animal','middleware' => ['login']], function() {
     
     Route::get('/Cadastrar','AnimalController@chamarTelaCadastroAnimal')->name('cadastrarAnimal');
     Route::post('/SalvarAnimal','AnimalController@addNovoAnimal')->name('salvarAnimal');
+    Route::get('/ProcurarAnimais','AnimalController@mostrarTodosAnimais')->name('procurarAnimais');
 });
 
 

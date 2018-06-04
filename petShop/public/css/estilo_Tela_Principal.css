@@ -121,6 +121,15 @@ html {
 #comprimento-box-consulta{
 	min-width: 183px;
 }
+#comprimento-box-especie{
+	min-width: 235px;
+}
+#comprimento-box-raca{
+	min-width: 210px;
+}
+#comprimento-box-relatorio{
+	min-width: 312px;
+}
 /*Deifini o logout na direita e com espaço interno da direita */
 #logout{
 
