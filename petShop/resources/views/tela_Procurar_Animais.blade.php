@@ -32,16 +32,16 @@
         </thead>
         <tbody>
             @foreach($animais as $dadostabela)
-                <tr {{--onclick="window.location.href='{{ route('showCliente',['id' => $dadostabela->id]) }}'"--}}>
-                    <th scope="row">{{$dadostabela['id_pet']}}</th>
-                    <td> {{$dadostabela['nome_dono']}} </td>
-                    <td> {{$dadostabela['nome_pet']}} </td>
-                    <td> {{$dadostabela['id_especie']}} </td>
-                    <td> {{$dadostabela['id_raca']}} </td>
-                    <td> {{$dadostabela['data_de_nascimento_pet']}} </td>
-                    <td> {{$dadostabela['peso']}} </td>
-                    <td> {{$dadostabela['sexo']}} </td>
-                    <td> {{$dadostabela['cor']}} </td>
+                <tr onclick="window.location.href='{{ route('showAnimal',['id' => $dadostabela->id]) }}'">
+                    <th scope="row">{{$dadostabela->id}}</th>
+                    <td> {{$dadostabela->nome}} </td>
+                    <td> {{$dadostabela->nome_pet}} </td>
+                    <td> {{$dadostabela->nome_especie}} </td>
+                    <td> {{$dadostabela->nome_raca}} </td>
+                    <td> {{$dadostabela->data_de_nascimento_pet}} </td>
+                    <td> {{$dadostabela->peso}} </td>
+                    <td> {{$dadostabela->sexo}} </td>
+                    <td> {{$dadostabela->cor}} </td>
                 </tr>
             @endforeach
         </tbody>

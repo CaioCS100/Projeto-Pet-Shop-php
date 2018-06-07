@@ -14,8 +14,9 @@ class CriandoTabelaAnimais extends Migration
     public function up()
     {
         Schema::create('animais', function (Blueprint $table) {
-            $table->increments('id_pet');
-            $table->string('nome_dono');
+            $table->increments('id');
+            $table->integer('nome_dono_id')->unsigned();
+            $table->foreign('nome_dono_id')->references('id')->on('clientes')->onDelete('cascade');
             $table->string('nome_pet');
             $table->date('data_de_nascimento_pet');
             $table->float('peso',5,2);
@@ -24,8 +25,10 @@ class CriandoTabelaAnimais extends Migration
             $table->string('info_pet_cadastro');
             $table->string('observacao_sobre_pet');
             $table->string('nome_da_imagem')->default('');
-            $table->integer('id_especie');
-            $table->integer('id_raca');
+            $table->integer('especie_id')->unsigned();
+            $table->foreign('especie_id')->references('id')->on('especies')->onDelete('cascade');
+            $table->integer('raca_id')->unsigned();
+            $table->foreign('raca_id')->references('id')->on('racas')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

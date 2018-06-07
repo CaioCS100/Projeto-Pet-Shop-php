@@ -12,12 +12,12 @@ function ativarCampos() {
     $('#idData').prop('disabled', false);
     $('#idPeso').prop('disabled', false);
     //$('#idEspecie').prop('disabled', false);
-    $('#botao-Procurar-especie').prop('disabled', false);
+    //$('#botao-Procurar-especie').prop('disabled', false);
     //$('#idRaca').prop('disabled', false);
-    $('#botao-Procurar-raca').prop('disabled', false);
+    //$('#botao-Procurar-raca').prop('disabled', false);
     $('#idSim').prop('disabled', false);
     $('#idNao').prop('disabled', false);
-    $('#idInfoPet').prop('disabled', false);
+    //$('#idInfoPet').prop('disabled', false);
     $('#idCor').prop('disabled', false);
     $('#botao-Cor').prop('disabled', false);
     $('#idObs').prop('disabled', false);
@@ -26,7 +26,6 @@ function ativarCampos() {
     $('#botao-procurar-clientes').prop('disabled', true);
     $('#botaoPesquisar').focus();
 }
-
 function selecionarLinha() {
     var tr = $('table tr');
     tr.on('click', function () {
@@ -66,12 +65,20 @@ function setRaca(nomeRaca)
 function selecionarDono() {
     $('#idNomeDono').val(nome);
     $('#nomeDonoModal').modal('hide');
+    if(nome!="" && nome != null)
+    {
+        $('#botao-Procurar-especie').prop('disabled', false);
+    }
 }
 
 function selecionarEspecie()
 {
     $('#idEspecie').val(especie);
     $('#especieModal').modal('hide');
+    if(especie!="" && especie!= null)
+    {
+        $('#botao-Procurar-raca').prop('disabled', false);
+    }
 }
 
 function selecionarRaca()

@@ -201,11 +201,11 @@
                                 Já teve cadastro em outro pet shop? Se sim, qual ?
                                     <br/>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="Sexo" id="idSim" value="S" disabled>
+                                        <input class="form-check-input" type="radio" name="checkInfoPet" id="idSim" value="S" disabled>
                                         <label class="form-check-label" for="idSim">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="Sexo" id="idNao" value="N" disabled>
+                                        <input class="form-check-input" type="radio" name="checkInfoPet" id="idNao" value="" disabled>
                                         <label class="form-check-label" for="idNao">Não</label>
                                     </div> 
                                     <br/>

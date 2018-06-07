@@ -7,6 +7,7 @@ use App\Model\Proprietario;
 use App\Model\Animal;
 use App\Model\Especie;
 use App\Model\Raca;
+use Illuminate\Support\Facades\DB;
 
 class AnimalController extends Controller
 {
@@ -14,25 +15,8 @@ class AnimalController extends Controller
         $exibirPorPagina = 10;
         $cliente = Proprietario::paginate($exibirPorPagina);
         $especies = Especie::where('id','>','1')->paginate($exibirPorPagina);
-        //$racas = Raca::where('id','>','1')->get();
 
        return view('tela_Cadastro_Animais',['cliente'=>$cliente],['especie'=>$especies]);
-
-    //    foreach ($racas as $raca)
-    //    {   
-    //         echo $raca->especie->id;  
-    //         echo "<br/>";  
-    //    }
-
-    //    foreach ($especies as $especie)
-    //    {
-    //     foreach ($especie->racas as $raca)
-    //     {
-    //         echo "$raca->nome_raca";
-    //         echo "<br/>";
-    //     }
-    //    }
-
     }
 
     public function addNovoAnimal(Request $request)
@@ -51,43 +35,73 @@ class AnimalController extends Controller
             
         $idEspecie = Especie::where('nome_especie',$request->especie)->first();
         $idRaca = Raca::where('nome_raca',$request->raca)->first();
+        $idNomeDono = Proprietario::where('nome',$request->nomeDono)->first();
             
         $nomeDaImagem = "";
+        $infoPet = "";    
         if($request->imagem!=null)
         {
             $extesao = $request->imagem->extension();
             $nomeDaImagem = "".$request->nomeDono ."".$request->nomeAnimal ."".$request->data;
             $request->imagem->storeas('public', "$nomeDaImagem."."$extesao");
-            $nomeDaImagem = "".$request->nomeDono ."".$request->nomeAnimal ."".$request->data;
+            $nomeDaImagem = "".$request->nomeDono ."".$request->nomeAnimal ."".$request->data."".$extesao;
+        }
+
+        if($request->checkInfoPet != "")
+        {
+            $infoPet = $request->infoPet;
         }
 
         $animais = new Animal; 
 
-        $animais->nome_dono = $request->nomeDono;
+        $animais->nome_dono_id = $idNomeDono->id;
         $animais->nome_pet = $request->nomeAnimal;
         $animais->data_de_nascimento_pet = $request->data;
         $animais->peso = $request->peso;
         $animais->sexo = $request->sexo;
         $animais->cor = $request->cor;
-        $animais->info_pet_cadastro = $request->infoPet;
+        $animais->info_pet_cadastro = $infoPet;
         $animais->observacao_sobre_pet = $request->obs;
         $animais->nome_da_imagem = $nomeDaImagem;
-        $animais->id_especie = $idEspecie->id;
-        $animais->id_raca = $idRaca->id;
+        $animais->especie_id = $idEspecie->id;
+        $animais->raca_id = $idRaca->id;
         $animais->save();
         return redirect()->route('cadastrarAnimal')->with('cadastrado', true);
     }
 
     public function mostrarTodosAnimais()
-    {
-        $animais = Animal::all();
+    {   
+        $animais = DB::table('animais')
+            ->select('animais.id', 'clientes.nome', 'animais.nome_pet', 'especies.nome_especie', 'racas.nome_raca', 'animais.data_de_nascimento_pet', 'animais.peso', 'animais.sexo', 'animais.cor')
+            ->join('racas', 'racas.id', '=', 'animais.raca_id')
+            ->join('clientes', 'clientes.id', '=', 'animais.nome_dono_id')
+            ->join('especies', 'especies.id', '=', 'animais.especie_id')
+            ->get();
+
         return view('tela_Procurar_Animais',['animais'=>$animais]);
-        // fazer a relação de 1 para muitos de animal com especie e raça
-        // foreach ($animais as $animal)
-        // {
-        //     echo $animal->id_especie;
-        // }
-        // $nomeEspecie = Especie::where('id_especie',$animais->id_especie)->first();
-        // echo $nomeEspecie;
+    }
+
+    public function mostrarAnimal(Request $request,$id)
+    {
+        $animais = DB::table('animais')
+        ->select('animais.id', 'clientes.nome', 'animais.nome_pet', 'especies.nome_especie', 'racas.nome_raca', 'animais.data_de_nascimento_pet', 'animais.peso', 'animais.sexo', 'animais.cor','animais.info_pet_cadastro','animais.nome_da_imagem','animais.observacao_sobre_pet')
+        ->join('racas', 'racas.id', '=', 'animais.raca_id')
+        ->join('clientes', 'clientes.id', '=', 'animais.nome_dono_id')
+        ->join('especies', 'especies.id', '=', 'animais.especie_id')
+        ->where('animais.id',$id)
+        ->first();
+
+        $exibirPorPagina = 10;
+        $cliente = Proprietario::paginate($exibirPorPagina);
+        $especies = Especie::where('id','>','1')->paginate($exibirPorPagina);
+
+        return view('tela_Mostrar_Editar_Animais',['animal'=>$animais,
+                                                   'especie'=>$especies,
+                                                   'cliente'=>$cliente]);
+    }
+
+    public function editarAnimal(Request $request,$id)
+    {
+        echo $id;
     }
 }

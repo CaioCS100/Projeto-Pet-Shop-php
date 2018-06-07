@@ -16,4 +16,10 @@ class Raca extends Model
       //return $this->belongsTo('App\Model\Especie');
         return $this->belongsTO(Especie::class);
     }
+
+    public function animal()
+    {
+      //return $this->belongsTo('App\Model\Especie');
+        return $this->belongsTO(Animal::class);
+    }
 }

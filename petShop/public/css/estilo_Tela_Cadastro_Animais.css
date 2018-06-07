@@ -89,8 +89,9 @@ body{
 
 #tituloCampoSexo{
 
-    position: relative;
-    left: 550px;;
+    position: absolute;
+    top: 0.5%;
+    left: 102%;
 }
 
 #espaco{
