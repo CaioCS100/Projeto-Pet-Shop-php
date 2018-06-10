@@ -60,7 +60,13 @@ body{
     width: 54px;
 }
 #botao-editar{
-    background: url("../Imagens/botao_editar_menor.jpg") no-repeat;
+    background: url("../Imagens/update-animal.jpeg") no-repeat;
+    height: 54px;
+    width: 54px;
+}
+
+#botao-delete{
+    background: url("../Imagens/delete-animal.jpeg") no-repeat;
     height: 54px;
     width: 54px;
 }

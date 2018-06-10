@@ -151,13 +151,13 @@
                                 <input type="text" class="form-control" id="idRaca" name="raca" value="{{old('raca',$animal->nome_raca)}}" readonly>
                             </div>
                             <div class="form-group col-md-1">
-                                <button type="button" class="btn btn-secondary botao-Procurar" id="botao-Procurar-raca" data-toggle="modal" data-target="#racaModal" data-placement="top" title="Procurar Raças" disabled></button>
+                                <button type="button" class="btn btn-secondary botao-Procurar" id="botao-Procurar-raca" onclick="showModalRacas(1);" data-toggle="modal" data-target="#racaModal" data-placement="top" title="Procurar Raças" disabled></button>
                             </div> 
                             <div class="modal fade" id="racaModal" tabindex="-1" role="dialog" aria-labelledby="racaModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="racaModalLabel">Selecione uma Espécie</h5>
+                                      <h5 class="modal-title" id="racaModalLabel">Selecione uma Raça</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
@@ -173,11 +173,9 @@
                                                     <tbody>
                                                         @foreach($especie as $dadostabela)
                                                             @foreach ($dadostabela->racas as $dadostabelaracas)
-                                                                <tr onclick="selecionarLinha();setRaca('{{ $dadostabelaracas['nome_raca'] }}');">
-                                                                    {{-- @if($dadostabelaracas['especie_id'] == 2) --}} 
-                                                                        <th scope="row">{{$dadostabelaracas['id']}}</th>
-                                                                        <td> {{$dadostabelaracas['nome_raca']}} </td>
-                                                                    {{-- @endif --}} 
+                                                                <tr class="especie-animal especie-{{$dadostabela['nome_especie']}}" onclick="selecionarLinha();setRaca('{{ $dadostabelaracas['nome_raca'] }}');"> 
+                                                                    <th scope="row">{{$dadostabelaracas['id']}}</th>
+                                                                    <td> {{$dadostabelaracas['nome_raca']}} </td>
                                                                 </tr>
                                                             @endforeach
                                                         @endforeach
@@ -201,15 +199,15 @@
                                 Já teve cadastro em outro pet shop? Se sim, qual ?
                                     <br/>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="Sexo" id="idSim" value="S" @if($animal->info_pet_cadastro != '') {{"checked=\'checked\'"}}@endif disabled>
+                                        <input class="form-check-input" type="radio" name="checkInfoPet" id="idSim" value="S" onclick="ativarCampoInfoPet();" @if($animal->info_pet_cadastro != '') {{"checked=\'checked\'"}}@endif disabled>
                                         <label class="form-check-label" for="idSim">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="Sexo" id="idNao" value="" @if($animal->info_pet_cadastro == '') {{"checked=\'checked\'"}}@endif disabled>
+                                        <input class="form-check-input" type="radio" name="checkInfoPet" id="idNao" value="N" onclick="desativarCampoInfoPet();" @if($animal->info_pet_cadastro == '') {{"checked=\'checked\'"}}@endif disabled>
                                         <label class="form-check-label" for="idNao">Não</label>
                                     </div> 
                                     <br/>
-                                    <input type="text" class="form-control" id="idInfoPet" name="infoPet" value="{{old('infoPet',$animal->info_pet_cadastro)}}" disabled/>
+                                    <input type="text" class="form-control" id="idInfoPet" name="infoPet" value="{{old('infoPet',$animal->info_pet_cadastro)}}" readonly/>
                             </div>
                             <div class="form-group col-md-1"> </div>
                             <div class="form-group col-md-6">
@@ -230,10 +228,10 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-primary" id="botao-novo-cadastro" onclick="ativarCampos()" data-toggle="tooltip" data-placement="top" title="Novo Cadastro de animais"></button>
-                        <button type="submit" class="btn btn-primary" id="botao-salvar" data-toggle="tooltip" data-placement="top" title="Salvar"></button>
-                        <button type="button" class="btn btn-primary" id="botao-procurar-animais" onclick="redirecionar()" data-toggle="tooltip" data-placement="top" title="Procurar Animais"></button>
-                        <button type="button" class="btn btn-primary" id="botao-voltar" onclick="voltar()" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
+                        <button type="button" class="btn btn-primary" id="botao-editar" onclick="ativarCampos()" data-toggle="tooltip" data-placement="top" title="Editar Animal"></button>
+                        <button type="submit" class="btn btn-primary" id="botao-salvar" data-toggle="tooltip" data-placement="top" title="Salvar" disabled></button>
+                        <button type="button" class="btn btn-primary" id="botao-delete" onclick="window.location.href='{{ route('excluirAnimal',$animal->id)}}'" data-toggle="tooltip" data-placement="top" title="Excluir Animal"></button>
+                        <button type="button" class="btn btn-primary" id="botao-voltar" onclick="window.location.href='{{ route('procurarAnimais')}}'" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
                 </div>
         </fieldset>
     </form>

@@ -22,7 +22,7 @@ class ProprietarioController extends Controller
 
         $request -> validate([
             'nome' => 'required',
-            'cpf' => 'required',
+            'cpf' => 'required|unique:clientes,cpf',
             'data' => 'required',
             'cep' => 'required',
             'telefone' => 'required',
@@ -74,11 +74,9 @@ class ProprietarioController extends Controller
 
     public function editarCliente(Request $request,$id)
     {
-        // atualizar cadastro e redirecionar para a tela de procurar clietnes e fazer uma mensagem na tela
-        // que some depois de algum tempo com a descrição "alteração feita com sucesso" ou algo do tipo
         $request -> validate([
             'nome' => 'required',
-            'cpf' => 'required',
+            'cpf' => 'required|unique:clientes',
             'data' => 'required',
             'cep' => 'required',
             'telefone' => 'required',
@@ -179,6 +177,7 @@ class ProprietarioController extends Controller
     public function UF()
     {
         return array(
+            "-",
             "AC",
             "AL",
             "AM",

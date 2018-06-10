@@ -173,7 +173,7 @@
                                                     <tbody>
                                                         @foreach($especie as $dadostabela)
                                                             @foreach ($dadostabela->racas as $dadostabelaracas)
-                                                                <tr onclick="selecionarLinha();setRaca('{{ $dadostabelaracas['nome_raca'] }}');">
+                                                                <tr class="especie-animal especie-{{$dadostabela['nome_especie']}}" onclick="selecionarLinha();setRaca('{{ $dadostabelaracas['nome_raca'] }}');">
                                                                     {{-- @if($dadostabelaracas['especie_id'] == 2) --}}
                                                                         <th scope="row">{{$dadostabelaracas['id']}}</th>
                                                                         <td> {{$dadostabelaracas['nome_raca']}} </td>
@@ -201,15 +201,15 @@
                                 Já teve cadastro em outro pet shop? Se sim, qual ?
                                     <br/>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="checkInfoPet" id="idSim" value="S" disabled>
+                                        <input class="form-check-input" type="radio" name="checkInfoPet" id="idSim" onclick="ativarCampoInfoPet();" value="S" disabled>
                                         <label class="form-check-label" for="idSim">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="checkInfoPet" id="idNao" value="" disabled>
+                                        <input class="form-check-input" type="radio" name="checkInfoPet" id="idNao" onclick="desativarCampoInfoPet();" value="" disabled>
                                         <label class="form-check-label" for="idNao">Não</label>
                                     </div> 
                                     <br/>
-                                    <input type="text" class="form-control" id="idInfoPet" name="infoPet" disabled/>
+                                    <input type="text" class="form-control" id="idInfoPet" name="infoPet" readonly/>
                             </div>
                             <div class="form-group col-md-1"> </div>
                             <div class="form-group col-md-6">
@@ -231,9 +231,9 @@
                         </div>
 
                         <button type="button" class="btn btn-primary" id="botao-novo-cadastro" onclick="ativarCampos()" data-toggle="tooltip" data-placement="top" title="Novo Cadastro de animais"></button>
-                        <button type="submit" class="btn btn-primary" id="botao-salvar" data-toggle="tooltip" data-placement="top" title="Salvar"></button>
-                        <button type="button" class="btn btn-primary" id="botao-procurar-animais" onclick="redirecionar()" data-toggle="tooltip" data-placement="top" title="Procurar Animais"></button>
-                        <button type="button" class="btn btn-primary" id="botao-voltar" onclick="voltar()" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
+                        <button type="submit" class="btn btn-primary" id="botao-salvar" data-toggle="tooltip" data-placement="top" title="Salvar" disabled></button>
+                        <button type="button" class="btn btn-primary" id="botao-procurar-animais" onclick="window.location.href='{{ route('procurarAnimais')}}'" data-toggle="tooltip" data-placement="top" title="Procurar Animais"></button>
+                        <button type="button" class="btn btn-primary" id="botao-voltar" onclick="window.location.href='{{ route('paginaPrincipal')}}'" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
                 </div>
         </fieldset>
     </form>

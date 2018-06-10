@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group col-md-4">
                           <label for="idCPF">CPF<span class="asterisco">*</span>:</label>
-                          <input type="text" class="form-control" id="idCPF" name="cpf" placeholder="Digite seu CPF" value="{{old('cpf', $cliente['cpf'])}}" disabled>
+                          <input type="text" class="form-control" id="idCPF" name="cpf" onblur="validarCPF(this.value);" placeholder="Digite seu CPF" value="{{old('cpf', $cliente['cpf'])}}" disabled>
                         </div>
                         <div class="form-group col-md-3">
                           <label for="idData">Data de Nascimento<span class="asterisco">*</span>:</label>
@@ -35,7 +35,7 @@
                     <div class="form-row">
                             <div class="form-group col-md-3">
                               <label for="idCEP">CEP<span class="asterisco">*</span>:</label>
-                              <input type="text" class="form-control" id="idCEP" name="cep" placeholder="Digite seu CEP" value="{{old('cep',$cliente['cep'])}}" disabled>
+                              <input type="text" class="form-control" id="idCEP" name="cep" onblur="pesquisacep(this.value);" placeholder="Digite seu CEP" value="{{old('cep',$cliente['cep'])}}" disabled>
                             </div>
                             <div class="form-group col-md-4">
                               <label for="idTelefone">Telefone<span class="asterisco">*</span>:</label>

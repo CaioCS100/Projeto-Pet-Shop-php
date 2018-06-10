@@ -44,7 +44,7 @@ class AnimalController extends Controller
             $extesao = $request->imagem->extension();
             $nomeDaImagem = "".$request->nomeDono ."".$request->nomeAnimal ."".$request->data;
             $request->imagem->storeas('public', "$nomeDaImagem."."$extesao");
-            $nomeDaImagem = "".$request->nomeDono ."".$request->nomeAnimal ."".$request->data."".$extesao;
+            $nomeDaImagem = "".$request->nomeDono ."".$request->nomeAnimal ."".$request->data.".".$extesao;
         }
 
         if($request->checkInfoPet != "")
@@ -102,6 +102,80 @@ class AnimalController extends Controller
 
     public function editarAnimal(Request $request,$id)
     {
-        echo $id;
+        $request -> validate([
+            'nomeDono' => 'required',
+            'nomeAnimal' => 'required',
+            'sexo' => 'required',
+            'data' => 'required',
+            'peso' => 'required|numeric',
+            'especie' => 'required',
+            'raca' => 'required',
+            'cor' => 'required',
+            'imagem' => 'image'
+            ]);
+
+        $nomeDaImagem = "";
+        $infoPet = "";    
+        if($request->imagem!=null)
+        {
+            $extesao = $request->imagem->extension();
+            $nomeDaImagem = "".$request->nomeDono ."".$request->nomeAnimal ."".$request->data;
+            $request->imagem->storeas('public', "$nomeDaImagem."."$extesao");
+            $nomeDaImagem = "".$request->nomeDono ."".$request->nomeAnimal ."".$request->data.".".$extesao;
+        }
+
+        echo $request->checkInfoPet;
+        echo "<br/>";
+
+        if($request->checkInfoPet != "N")
+        {
+            $infoPet = $request->infoPet;
+        }
+
+        $dadosAtualizadosAnimal = Animal::find($id);
+        $idEspecie = Especie::where('nome_especie',$request->especie)->first();
+        $idRaca = Raca::where('nome_raca',$request->raca)->first();
+        $idNomeDono = Proprietario::where('nome',$request->nomeDono)->first();
+
+        echo $idNomeDono->id;
+        echo "<br/>";
+        echo $request->nomeAnimal;
+        echo "<br/>";
+        echo $request->data;
+        echo "<br/>";
+        echo $request->peso;
+        echo "<br/>";
+        echo $request->cor;
+        echo "<br/>";
+        echo $info_pet_cadastro = $infoPet;
+        echo "<br/>";
+        echo $request->obs;
+        echo "<br/>";
+        echo $nomeDaImagem;
+        echo "<br/>";
+        echo $idEspecie->id;
+        echo "<br/>";
+        echo $idRaca->id;
+        echo "<br/>";
+
+        // $dadosAtualizadosAnimal->nome_dono_id = $idNomeDono->id;
+        // $dadosAtualizadosAnimal->nome_pet = $request->nomeAnimal;
+        // $dadosAtualizadosAnimal->data_de_nascimento_pet = $request->data;
+        // $dadosAtualizadosAnimal->peso = $request->peso;
+        // $dadosAtualizadosAnimal->sexo = $request->sexo;
+        // $dadosAtualizadosAnimal->cor = $request->cor;
+        // $dadosAtualizadosAnimal->info_pet_cadastro = $infoPet;
+        // $dadosAtualizadosAnimal->observacao_sobre_pet = $request->obs;
+        // $dadosAtualizadosAnimal->nome_da_imagem = $nomeDaImagem;
+        // $dadosAtualizadosAnimal->especie_id = $idEspecie->id;
+        // $dadosAtualizadosAnimal->raca_id = $idRaca->id;
+        // $dadosAtualizadosAnimal->save();
+        // return redirect()->route('procurarAnimais')->with('editado', true);
+    }
+
+    public function deletarAnimal(Request $request,$id)
+    {
+        Animal::destroy($id);
+        return redirect()->route('procurarAnimais')->with('excluido', true);
     }
 }

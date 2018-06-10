@@ -39,6 +39,7 @@ Route::group(['prefix' => 'animal','middleware' => ['login']], function() {
     Route::get('/procurarAnimais','AnimalController@mostrarTodosAnimais')->name('procurarAnimais');
     Route::get('/mostrarAnimal/{id}','AnimalController@mostrarAnimal')->name('showAnimal');
     Route::post('/editarAnimais/{id}','AnimalController@editarAnimal')->name('atualizarAnimal');
+    Route::get('excluirAnimal/{id}','AnimalController@deletarAnimal')->name('excluirAnimal');
 });
 
 
