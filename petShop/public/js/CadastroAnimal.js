@@ -121,3 +121,11 @@ function desativarCampoInfoPet()
     $('#idInfoPet').prop('readonly', true);
     $('#idInfoPet').val("");
 }
+
+function confirmExclusao(id)
+{
+    if(confirm("Tem certeza que deseja excluir esse Animal ?"))
+    {
+        location.href = "../excluirAnimal/"+id;
+    }
+}

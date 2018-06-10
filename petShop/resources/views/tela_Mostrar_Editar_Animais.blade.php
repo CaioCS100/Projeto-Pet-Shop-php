@@ -230,7 +230,7 @@
 
                         <button type="button" class="btn btn-primary" id="botao-editar" onclick="ativarCampos()" data-toggle="tooltip" data-placement="top" title="Editar Animal"></button>
                         <button type="submit" class="btn btn-primary" id="botao-salvar" data-toggle="tooltip" data-placement="top" title="Salvar" disabled></button>
-                        <button type="button" class="btn btn-primary" id="botao-delete" onclick="window.location.href='{{ route('excluirAnimal',$animal->id)}}'" data-toggle="tooltip" data-placement="top" title="Excluir Animal"></button>
+                        <button type="button" class="btn btn-primary" id="botao-delete" onclick="confirmExclusao({{$animal->id}});" data-toggle="tooltip" data-placement="top" title="Excluir Animal"></button>
                         <button type="button" class="btn btn-primary" id="botao-voltar" onclick="window.location.href='{{ route('procurarAnimais')}}'" data-toggle="tooltip" data-placement="top" title="Voltar"></button>
                 </div>
         </fieldset>
